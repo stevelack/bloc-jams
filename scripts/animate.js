@@ -1,0 +1,4 @@
+var animatePoints = function() {
+	 };
+
+animatePoints();
