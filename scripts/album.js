@@ -27,6 +27,22 @@
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+var albumLack = {
+     title: 'The Steve Lack Trio',
+     artist: 'Steve Lack',
+     label: 'Steve\'s Records',
+     year: '2016',
+     albumArtUrl: 'assets/images/album_covers/22.png',
+     songs: [
+         { title: 'My Foolish Heart', duration: '1:01' },
+         { title: 'Watz for Debby', duration: '5:01' },
+         { title: 'Detour Ahead', duration: '3:21'},
+         { title: 'My Romance', duration: '3:14' },
+         { title: 'Some Other Time', duration: '2:15'},
+		 { title: 'Milestones', duration: '2:15'},
+		 { title: 'Porgy (I loves you Porgy)', duration: '2:15'}
+     ]
+ };
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -38,13 +54,16 @@ var createSongRow = function(songNumber, songName, songLength) {
  
      return template;
  };
-var setCurrentAlbum = function(album) {
-  
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
+
+ var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+var setCurrentAlbum = function(album) {
+  
+    
  
     
      albumTitle.firstChild.nodeValue = album.title;
@@ -63,4 +82,14 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+	 
+	 var albums = [albumPicasso, albumMarconi, albumLack];
+	 var index = 2;
+	 albumImage.addEventListener("click", function(event) {
+			setCurrentAlbum(albums[index]);
+	 		index++;
+	 		if (index == albums.length){
+				index = 0;	
+			}
+								 });
  };
